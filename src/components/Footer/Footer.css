@@ -1,0 +1,98 @@
+.footer {
+  background-color: #0b132b;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== Social Section ===== */
+.footer-social {
+  background: linear-gradient(90deg, #2a2a72, #009ffd);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;   
+  flex-wrap: wrap;
+}
+
+.footer-social-text {
+  font-size: 1rem;
+}
+
+.footer-icons a {
+  color: #fff;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: gold;
+  transform: scale(1.1);
+}
+
+/* ===== Footer Links ===== */
+.footer-links {
+  padding: 3rem 2rem;
+  background-color: #1c2331;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.footer-title {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: gold;
+  margin-bottom: 0.5rem;
+}
+
+.footer-line {
+  width: 60px;
+  height: 2px;
+  background-color: crimson;
+  margin-bottom: 1rem;
+}
+
+.footer-col p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 0.4rem 0;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: gold;
+}
+
+/* ===== Bottom Section ===== */
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-bottom span {
+  color: gold;
+  font-weight: 600;
+}
+@media (max-width: 480px) {
+  .footer-social {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
