@@ -16,7 +16,7 @@
   width: 400px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
 }
 
 .login-title {
