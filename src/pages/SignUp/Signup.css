@@ -1,0 +1,126 @@
+/* ===== Signup Page Base ===== */
+.signup-container {
+  background: linear-gradient(135deg, #0b132b, #1c2331);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ===== Signup Card ===== */
+.signup-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  width: 420px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+
+  /* Frosted Glass Effect */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== Title ===== */
+.signup-card h2 {
+  font-size: 2rem;
+  color: gold;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* ===== Input Fields ===== */
+.signup-card input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #1c2331;
+  color: #fff;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.signup-card input::placeholder {
+  color: #999;
+}
+
+.signup-card input:focus {
+  border: 1px solid gold;
+  background-color: #141a25;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+/* ===== Error Text ===== */
+.error-text {
+  color: crimson;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== Signup Button ===== */
+.signup-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: gold;
+  border: none;
+  border-radius: 10px;
+  color: #0b132b;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #ffb703;
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+}
+
+/* ===== Login Redirect Link ===== */
+.login-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.login-link span {
+  color: crimson;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-link span:hover {
+  color: gold;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 480px) {
+  .signup-card {
+    width: 90%;
+    padding: 2.5rem 1.8rem;
+  }
+
+  .signup-card h2 {
+    font-size: 1.7rem;
+  }
+
+  .signup-btn {
+    font-size: 0.95rem;
+  }
+}
+/* ===== End of Signup Page Styles ===== */

@@ -1,0 +1,93 @@
+.login-page {
+  background: linear-gradient(135deg, #0b132b, #1c2331);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  width: 400px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  /* backdrop-filter: blur(10px); */
+}
+
+.login-title {
+  font-size: 2rem;
+  color: gold;
+  margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: gold;
+  margin-bottom: 0.3rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #1c2331;
+  color: #fff;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-group input::placeholder {
+  color: #999;
+}
+
+.login-btn1 {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: gold;
+  border: none;
+  border-radius: 10px;
+  color: #0b132b;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn1:hover {
+  background-color: #ffb703;
+  transform: scale(1.03);
+} 
+
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.login-footer a {
+  color: crimson;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-footer a:hover {
+  color: gold;
+}
