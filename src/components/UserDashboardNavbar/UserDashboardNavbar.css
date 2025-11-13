@@ -1,0 +1,145 @@
+/* ==============================
+   🌟 BookMyTable Royal Navbar
+   ============================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.navbar {
+  background-color: #0b132b;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+/* ===== Brand Logo ===== */
+.navbar-logo a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #666670, #35a0df);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-logo span {
+  color: gold;
+}
+
+/* ===== Navigation Menu ===== */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a:not(.login-btn)::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: crimson;  /* underline only for normal nav links */
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s ease;
+}
+
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.nav-menu a:hover {
+  color: gold;
+  transform: scale(1.05);
+}
+
+/* ===== Login Button ===== */
+.login-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 25px;
+  background: linear-gradient(90deg, #2a2a72, #009ffd);
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background: rgb(0, 0, 0);
+  color: #ff0000;
+  transform: scale(1.05);
+}
+
+
+/* ===== Mobile Menu Toggle ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #1c2331;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.4s ease;
+  }
+}
