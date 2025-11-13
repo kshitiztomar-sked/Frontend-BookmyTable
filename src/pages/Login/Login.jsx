@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // ✅ navigation hook
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Login submitted:", { email, password });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-      return (
+    // Simulate login success
+    console.log("Login submitted:", { email, password });
+
+    // ✅ Redirect to User Dashboard (mock login success)
+    navigate("/user/dashboard");
+  };
+
+  return (
     <div className="login-page">
       <div className="login-card">
         <h2 className="login-title">Welcome Back!</h2>
@@ -46,9 +52,9 @@ const Login = () => {
 
           <p className="login-footer">
             Don’t have an account?{" "}
-      <Link to="/signup">
-        <span>Sign Up</span>
-      </Link>
+            <Link to="/signup">
+              <span>Sign Up</span>
+            </Link>
           </p>
         </form>
       </div>
