@@ -1,0 +1,206 @@
+/* ==============================
+   🌟 Restaurant Index Page
+   ============================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --deep-navy: #0b132b;
+  --dark-blue: #1c2331;
+  --royal-gradient: linear-gradient(135deg, #2a2a72, #009ffd);
+  --gold: #f9d342;
+  --white: #ffffff;
+  --gray: #dcdcdc;
+}
+
+/* ===== Page Base ===== */
+.restaurant-index {
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+  min-height: 100vh;
+  background: var(--dark-blue);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Topbar ===== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 50px;
+  background: rgba(11, 19, 43, 0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.brand-name {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.brand-name:hover {
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.login-btn2 {
+  background: var(--royal-gradient);
+  color: var(--white);
+  padding: 10px 24px;
+  border: 2px solid var(--white);
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.login-btn2:hover {
+  background: var(--gold);
+  color: var(--dark-blue);
+  transform: translateY(-2px);
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  padding: 100px 20px;
+  overflow: hidden;
+  background: url("https://t3.ftcdn.net/jpg/02/05/87/60/360_F_205876015_hYYs7ugqoU8QAobSS3TbnGQ92qyS5gEc.jpg")
+    center/cover no-repeat;
+}
+
+/* Dark overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 19, 43, 0.65);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.hero-content h5 {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+  color: var(--gray);
+}
+
+.register-btn1 {
+  background: var(--royal-gradient);
+  padding: 14px 35px;
+  font-size: 1.05rem;
+  border: 2px solid var(--white);
+  border-radius: 30px;
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.register-btn1:hover {
+  background: var(--gold);
+  color: var(--dark-blue);
+  transform: translateY(-4px);
+}
+
+/* ===== Footer ===== */
+.restaurant-footer {
+  background: rgba(11, 19, 43, 0.95);
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.footer-text {
+  color: var(--gray);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: var(--white);
+  margin: 0 12px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 15px 25px;
+  }
+
+  .brand-name {
+    font-size: 1.5rem;
+  }
+
+  .hero-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-btn1 {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
