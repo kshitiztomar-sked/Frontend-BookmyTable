@@ -5,16 +5,32 @@ import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // ✅ navigation hook
+  const [message, setMessage] = useState(""); // to show success/error messages
+  const navigate = useNavigate(); // for redirect
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simulate login success
-    console.log("Login submitted:", { email, password });
+    try {
+      const response = await fetch("http://127.0.0.1:8000/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: email, password }),
+      });
 
-    // ✅ Redirect to User Dashboard (mock login success)
-    navigate("/user/dashboard");
+      if (response.ok) {
+        const data = await response.json();
+        setMessage(data.message || "Login successful!");
+        localStorage.setItem("token", data.token); // store token
+        navigate("/user/dashboard"); // ✅ redirect after success
+      } else {
+        const errorData = await response.json();
+        setMessage(errorData.detail || "Invalid credentials. Please try again.");
+      }
+    } catch (err) {
+      setMessage("Something went wrong. Please try again later.");
+      console.error(err);
+    }
   };
 
   return (
@@ -27,7 +43,7 @@ const Login = () => {
           <div className="input-group">
             <label>Email Address</label>
             <input
-              type="email"
+              type="text"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -49,6 +65,8 @@ const Login = () => {
           <button type="submit" className="login-btn1">
             Login
           </button>
+
+          {message && <p className="login-message">{message}</p>} {/* shows backend response */}
 
           <p className="login-footer">
             Don’t have an account?{" "}
