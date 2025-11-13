@@ -13,10 +13,14 @@ import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 
+
+
+
 // ===== Restaurant Pages =====
-// import ResturantIndex from "./pages/ResturantIndex/ResturantIndex";
-// import RegisterRestaurant from "./pages/RegisterResturant/RegisterResturant";
-// import ResturantLogin from "./pages/ResturantLogin/ResturantLogin";
+import ResturantIndex from "./pages/ResturantIndex/ResturantIndex";
+import RegisterRestaurant from "./pages/RegisterResturant/RegisterResturant";
+import ResturantLogin from "./pages/ResturantLogin/ResturantLogin";
+
 
 // ===== Layout Wrapper =====
 const Layout = () => {
@@ -38,10 +42,11 @@ const Layout = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user/dashboard" element={<UserDashboard />} />
 
-        {/* ===== Restaurant Routes ===== */}
-        {/* <Route path="/restaurant" element={<ResturantIndex />} />
+        {/* ===== Restaurant Routes ===== */} 
+        <Route path="/restaurant" element={<ResturantIndex />} />
         <Route path="/restaurant/register-restaurant" element={<RegisterRestaurant />} />
-        <Route path="/restaurant/login" element={<ResturantLogin />} /> */}
+        <Route path="/restaurant/login" element={<ResturantLogin />} />
+
       </Routes>
 
       {!hideLayout && <Footer />}
