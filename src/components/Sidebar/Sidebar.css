@@ -1,0 +1,149 @@
+/* =====================================
+   🌟 BookMyTable Sidebar (Responsive + Dynamic)
+   ===================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root{
+  --bg-dark: #0b132b;
+  --panel-dark: #0b132b;
+  --panel-2: #18202b;
+  --gold: #d4a017;
+  --muted-white: rgba(255,255,255,0.92);
+  --glass-edge: rgba(0,195,255,0.12);
+  --card-radius: 12px;
+}
+
+/* container ensures layout consistency with App.jsx wrapper */
+.sidebar-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: transparent;
+}
+
+/* Sidebar panel */
+.sidebar {
+  background: linear-gradient(135deg, rgba(11,19,43,0.94), rgba(20,28,44,0.96));
+  color: var(--muted-white);
+  min-height: 100vh;
+  width: 260px;
+  padding: 26px 20px;
+  transition: width 280ms ease, padding 280ms ease;
+  box-shadow: 6px 0 30px rgba(3,8,20,0.6);
+  border-right: 2px solid rgba(212,160,23,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 10;
+}
+
+/* collapsed state */
+.sidebar.closed {
+  width: 84px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+/* Toggle */
+.sidebar-toggle{
+  position: absolute;
+  top: 18px;
+  right: -16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--muted-white);
+  color: var(--bg-dark);
+  display: grid;
+  place-items: center;
+  border: none;
+  box-shadow: 0 6px 18px rgba(11,19,43,0.45);
+  cursor: pointer;
+  transition: transform .18s ease;
+}
+.sidebar-toggle:hover{ transform: scale(1.06) rotate(14deg); }
+
+/* Logo */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.sidebar-logo img{
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid rgba(212,160,23,0.14);
+  box-shadow: 0 6px 18px rgba(11,19,43,0.6), inset 0 0 10px rgba(212,160,23,0.02);
+}
+.sidebar.closed .sidebar-logo img{ width: 36px; height: 36px; }
+.logo-text{ display:flex; flex-direction:column; line-height:1; }
+.brand-name{ font-weight:700; color: var(--gold); font-size:18px; letter-spacing:0.2px; }
+.brand-sub{ font-size:11px; color: rgba(255,255,255,0.68); margin-top:2px; }
+
+/* hidden text for collapsed state */
+.hidden-text{ opacity:0; transform: translateX(-10px); pointer-events:none; transition: all .22s ease; }
+
+/* menu */
+.sidebar-menu{ list-style:none; padding:0; margin-top:6px; display:block; flex:1 1 auto; }
+.sidebar-item{
+  display:flex; align-items:center; gap:12px;
+  padding:11px 10px; border-radius:10px; margin-bottom:8px; cursor:pointer;
+  transition: all .20s ease; color:var(--muted-white); text-decoration:none;
+  background: transparent;
+}
+.sidebar-item .sidebar-icon{ display:inline-flex; align-items:center; justify-content:center; color:var(--muted-white); opacity:.98; }
+.sidebar-item .sidebar-text{ font-size:15px; font-weight:600; color:var(--muted-white); text-decoration:none; }
+
+/* hover */
+.sidebar-item:hover{
+  transform: translateX(6px);
+  background: linear-gradient(90deg, rgba(212,160,23,0.06), rgba(255,255,255,0.02));
+  box-shadow: 0 6px 24px rgba(11,19,43,0.45);
+  border-left: 3px solid var(--gold);
+}
+
+/* active */
+@keyframes neonPulse {
+  0%{ box-shadow: 0 0 8px rgba(212,160,23,0.08); }
+  50%{ box-shadow: 0 0 14px rgba(212,160,23,0.14); }
+  100%{ box-shadow: 0 0 8px rgba(212,160,23,0.08); }
+}
+.sidebar-item.active{
+  background: linear-gradient(90deg, rgba(212,160,23,0.08), rgba(255,255,255,0.02));
+  transform: translateX(6px);
+  border-left: 3px solid var(--gold);
+  animation: neonPulse 2.2s infinite ease-in-out;
+}
+
+/* logout special */
+.sidebar-item.logout{ margin-top: 6px; }
+.sidebar-item.logout:hover{
+  background: linear-gradient(90deg, rgba(255,0,0,0.06), rgba(255,255,255,0.02));
+  border-left-color: rgba(255,0,0,0.7);
+}
+
+/* footer small */
+.sidebar-footer{ font-size:12px; color: rgba(255,255,255,0.6); padding-top:6px; }
+
+/* Main content sits to the right of the sidebar (pages include their own containers) */
+@media (max-width: 768px){
+  .sidebar{  left: 0; top: 0; bottom: 0; z-index: 40; transform: translateX(0); }
+  .sidebar-toggle{ right: -18px; top: 18px; }
+}
+
+@media (max-width: 420px){
+  .sidebar{  left: 0; top: 0; bottom: 0; z-index: 40; transform: translateX(0); }
+  .sidebar-toggle{ right: -18px; top: 18px; }
+  /* collapsed state */
+.sidebar.closed {
+  width: 31px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+}

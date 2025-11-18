@@ -92,7 +92,7 @@ const RegisterRestaurant = () => {
           {error && <p className="error-message">{error}</p>}
           {success && <p className="success-message">{success}</p>}
 
-          <button type="submit" className="register-btn2">
+          <button type="submit" className="register-btn2" onClick={() => navigate("/restaurant/register-details")}>
             Register
           </button>
 

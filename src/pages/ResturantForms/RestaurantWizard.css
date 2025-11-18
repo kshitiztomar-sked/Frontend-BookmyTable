@@ -1,0 +1,194 @@
+/* ===========================================================
+   DESKTOP CARD + MOBILE CLEAN VIEW
+   =========================================================== */
+
+:root{
+  --bg: #0b132b;
+  --card-top: #141a2b;
+  --card-bottom: #1e273d;
+  --gold: #FFD700;
+  --accent: linear-gradient(90deg, #2a2a72, #009ffd);
+  --text: #ffffff;
+  --muted: #cccccc;
+}
+
+/* GLOBAL */
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+
+/* PAGE */
+.rw-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* STEP INDICATOR */
+.rw-step-indicator {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 26px;
+}
+
+.rw-step-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+/* active */
+.rw-step-circle.active {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.25);
+}
+
+/* done */
+.rw-step-circle.done {
+  background: #009ffd;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,153,255,0.25);
+}
+
+.rw-step-circle:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------- DESKTOP CARD (DEFAULT) ---------- */
+.rw-wizard-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 28px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--card-top), var(--card-bottom));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: 0.3s ease;
+}
+
+/* Hover (desktop only behavior) */
+.rw-wizard-card:hover {
+  transform: translateY(-3px);
+}
+
+/* TITLE */
+.rw-wizard-title {
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin-bottom: 18px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* FORM SECTION */
+.rw-form-section {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ---------- BUTTONS ---------- */
+.rw-wizard-buttons {
+  margin-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.rw-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.25s ease;
+}
+
+/* Back */
+.rw-btn-back {
+  background: rgba(255,255,255,0.10);
+  color: var(--gold);
+}
+.rw-btn-back:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* Next */
+.rw-btn-next {
+  background: var(--accent);
+  color: #fff;
+}
+.rw-btn-next:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Submit */
+.rw-btn-submit {
+  background: var(--gold);
+  color: var(--bg);
+}
+.rw-btn-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===========================================================
+   MOBILE MODE — REMOVE CARD COMPLETELY
+   =========================================================== */
+
+@media (max-width: 600px) {
+
+  /* Remove card background + border + radius + shadow */
+  .rw-wizard-card {
+    padding: 0;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Remove card hover animation */
+  .rw-wizard-card:hover {
+    transform: none !important;
+  }
+
+  /* Step circles smaller */
+  .rw-step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  /* Mobile spacing */
+  .rw-step-indicator {
+    gap: 10px;
+  }
+
+  /* Buttons full width */
+  .rw-wizard-buttons {
+    flex-direction: column;
+  }
+
+  .rw-btn {
+    width: 100%;
+  }
+}
