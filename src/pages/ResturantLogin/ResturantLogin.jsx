@@ -88,6 +88,7 @@ const ResturantLogin = () => {
           </button>
         </form>
       </div>
+     
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UserEditProfile.css";
+import styles from "./UserEditProfile.module.css";
 import UserDashboardNavbar from "../../components/UserDashboardNavbar/UserDashboardNavbar";
 import Footer from "../../components/Footer/Footer";
 
@@ -33,16 +33,15 @@ const UserEditProfile = () => {
   };
 
   return (
-    <div className="edit-profile-page">
+    <div className={styles.editProfilePage}>
       <UserDashboardNavbar />
 
-      <div className="edit-profile-container">
-        <h2 className="edit-profile-title">✏️ Edit Profile</h2>
+      <div className={styles.editProfileContainer}>
+        <h2 className={styles.editProfileTitle}>✏️ Edit Profile</h2>
 
-        <form className="edit-profile-form" onSubmit={handleSubmit}>
+        <form className={styles.editProfileForm} onSubmit={handleSubmit}>
 
-          {/* === Profile Image === */}
-          <div className="form-group image-upload">
+          <div className={`${styles.formGroup} ${styles.imageUpload}`}>
             <label>Profile Image:</label>
             <input
               type="file"
@@ -52,8 +51,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === Contact Number === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Contact Number:</label>
             <input
               type="text"
@@ -63,8 +61,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === DOB === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Date of Birth:</label>
             <input
               type="date"
@@ -74,10 +71,13 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === Gender === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Gender:</label>
-            <select name="gender" value={formData.gender} onChange={handleChange}>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -85,8 +85,7 @@ const UserEditProfile = () => {
             </select>
           </div>
 
-          {/* === Address 1 === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Address Line 1:</label>
             <input
               type="text"
@@ -96,8 +95,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === Address 2 === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Address Line 2:</label>
             <input
               type="text"
@@ -107,8 +105,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === City === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>City:</label>
             <input
               type="text"
@@ -118,8 +115,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === State === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>State:</label>
             <input
               type="text"
@@ -129,8 +125,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === Pincode === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Pincode:</label>
             <input
               type="text"
@@ -140,8 +135,7 @@ const UserEditProfile = () => {
             />
           </div>
 
-          {/* === Country === */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label>Country:</label>
             <input
               type="text"
@@ -151,10 +145,11 @@ const UserEditProfile = () => {
             />
           </div>
 
-          <button type="submit" className="save-btn">Save Changes</button>
+          <button type="submit" className={styles.saveBtn}>
+            Save Changes
+          </button>
         </form>
       </div>
-
       <Footer />
     </div>
   );

@@ -1,21 +1,21 @@
-.edit-profile-page {
+.editProfilePage {
   background: #0b132b;
   min-height: 100vh;
   color: #fff;
   font-family: "Poppins", sans-serif;
 }
 
-.edit-profile-container {
+.editProfileContainer {
   max-width: 650px;
   margin: 4rem auto;
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   padding: 2rem 2.5rem;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
-.edit-profile-title {
+.editProfileTitle {
   text-align: center;
   font-size: 2rem;
   color: gold;
@@ -23,26 +23,26 @@
   letter-spacing: 2px;
 }
 
-.edit-profile-form {
+.editProfileForm {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.form-group {
+.formGroup {
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.form-group label {
+.formGroup label {
   margin-bottom: 0.4rem;
   font-weight: 600;
   color: #fff;
 }
 
-.form-group input,
-.form-group select {
+.formGroup input,
+.formGroup select {
   padding: 0.8rem 1rem;
   border-radius: 10px;
   border: 1px solid #444;
@@ -51,21 +51,20 @@
   font-size: 1rem;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+.formGroup input:focus,
+.formGroup select:focus {
   outline: none;
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-  background-color: #1c2331 !important;  /* 👈 FIXES WHITE BACKGROUND */
+  background-color: #1c2331 !important;
   color: #fff;
 }
 
-
-.image-upload input {
+.imageUpload input {
   padding: 0.6rem;
   background: #1c2331;
 }
 
-.save-btn {
+.saveBtn {
   margin-top: 1rem;
   padding: 0.9rem;
   background: linear-gradient(90deg, #2a2a72, #009ffd);
@@ -79,7 +78,7 @@
   letter-spacing: 1px;
 }
 
-.save-btn:hover {
+.saveBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4);
 }
