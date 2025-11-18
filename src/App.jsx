@@ -20,6 +20,10 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import ResturantIndex from "./pages/ResturantIndex/ResturantIndex";
 import RegisterRestaurant from "./pages/RegisterResturant/RegisterResturant";
 import ResturantLogin from "./pages/ResturantLogin/ResturantLogin";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import UserEditProfile from "./pages/UserEditProfile/UserEditProfile";
+import UserRestaurantExplore from "./pages/UserRestaurantExplore/UserRestaurantExplore";
+
 
 
 // ===== Layout Wrapper =====
@@ -42,10 +46,16 @@ const Layout = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user/dashboard" element={<UserDashboard />} />
 
-        {/* ===== Restaurant Routes ===== */} 
+        {/* ===== Restaurant Routes ===== */}
         <Route path="/restaurant" element={<ResturantIndex />} />
         <Route path="/restaurant/register-restaurant" element={<RegisterRestaurant />} />
         <Route path="/restaurant/login" element={<ResturantLogin />} />
+        <Route path="/user/profile" element={<><UserProfile /></>}
+        />
+        <Route path="/user/edit-profile" element={<> <UserEditProfile /></>} />
+        <Route path="/user/restaurant/:id" element={<UserRestaurantExplore />} />
+
+
 
       </Routes>
 
