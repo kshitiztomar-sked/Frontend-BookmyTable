@@ -1,0 +1,63 @@
+.restaurant-explore-page {
+  background: #0b132b;
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300; /* LIGHT WEIGHT */
+}
+
+.restaurant-explore-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.15);
+}
+
+.restaurant-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: gold;
+  margin-bottom: 1.8rem;
+  font-weight: 400; /* NORMAL LIGHT */
+}
+
+.restaurant-section {
+  margin-bottom: 1.6rem;
+  padding: 1rem 1.2rem;
+  background: #161c27;
+  border-radius: 12px;
+}
+
+.restaurant-section h2 {
+  color: gold;
+  margin-bottom: 0.4rem;
+  font-weight: 400; /* not bold */
+  font-size: 1.2rem;
+}
+
+.restaurant-section p {
+  font-size: 0.95rem;
+  font-weight: 300; /* LIGHT */
+  color: #d8d8d8;
+}
+
+.map-btn {
+  margin-top: 0.7rem;
+  padding: 0.6rem 0.9rem;
+  background: linear-gradient(90deg, #2a2a72, #009ffd);
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: white;
+  font-weight: 400; /* NOT TOO BOLD */
+  transition: 0.25s ease;
+}
+
+.map-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 162, 255, 0.3);
+}
+
