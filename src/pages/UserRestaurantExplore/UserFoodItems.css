@@ -1,0 +1,200 @@
+/* =======================
+   FOOD ITEMS PAGE BASE
+========================= */
+.food-items-page {
+  background: #0b132b;
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.food-title {
+  color: gold;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+/* =======================
+        GRID
+========================= */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* =======================
+        CARD
+========================= */
+.food-card {
+  background: #1c2331;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* =======================
+        IMAGE
+========================= */
+.food-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* =======================
+   TAG ON IMAGE (LIGHT GREEN)
+========================= */
+.food-tag-on-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.95), rgba(102, 20, 180, 0.95));
+  border-color: rgba(138, 43, 226, 0.6);
+  color: #fff;
+
+  padding: 2px 6px;
+  font-size: 0.65rem;
+  border-radius: 5px;
+
+  letter-spacing: 0.4px;
+  font-weight: 500;
+
+  backdrop-filter: blur(3px);
+}
+
+/* Stack multiple tags (optional) */
+.food-tag-group {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* =======================
+        INFO BOX
+========================= */
+.food-info {
+  padding: 1.2rem;
+  text-align: left;
+}
+
+.food-name {
+  color: gold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.food-desc {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* =======================
+        BUTTON
+========================= */
+.add-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background: linear-gradient(90deg, #2a2a72, #009ffd);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4);
+}
+
+
+
+
+
+/* Alternative tag styles - Add these classes for variety */
+.food-tag-bestseller {
+  background: linear-gradient(135deg, rgba(255, 50, 50, 0.95), rgba(200, 30, 30, 0.95));
+  border-color: rgba(255, 50, 50, 0.6);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 50, 50, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.food-tag-chef-special {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.95), rgba(102, 20, 180, 0.95));
+  border-color: rgba(138, 43, 226, 0.6);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.food-tag-spicy {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.95), rgba(220, 100, 0, 0.95));
+  border-color: rgba(255, 140, 0, 0.6);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.food-tag-loved {
+  background: linear-gradient(135deg, rgba(255, 20, 147, 0.95), rgba(200, 10, 120, 0.95));
+  border-color: rgba(255, 20, 147, 0.6);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+} */
+
+/* Icon support for tags */
+.food-tag-on-image::before {
+  content: '⭐';
+  margin-right: 4px;
+  font-size: 0.8em;
+}
+
+.food-tag-bestseller::before {
+  content: '🔥';
+}
+
+.food-tag-chef-special::before {
+  content: '👨‍🍳';
+}
+
+.food-tag-spicy::before {
+  content: '🌶️';
+}
+
+.food-tag-loved::before {
+  content: '❤️';
+} 
+
+/* Stack multiple tags (optional) */
+.food-tag-group {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}

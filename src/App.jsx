@@ -20,6 +20,8 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UserEditProfile from "./pages/UserEditProfile/UserEditProfile";
 import UserRestaurantExplore from "./pages/UserRestaurantExplore/UserRestaurantExplore";
+import UserBookings from "./pages/Bookings/UserBookings";
+import UserFoodMenu from "./pages/UserFoodMenu/UserFoodMenu";
 
 
 // ===== Restaurant Pages =====
@@ -63,6 +65,8 @@ const Layout = () => {
         <Route path="/user/profile" element={<><UserProfile /></>}/>
         <Route path="/user/edit-profile" element={<> <UserEditProfile /></>} />
         <Route path="/user/restaurant/:id" element={<UserRestaurantExplore />} />
+        <Route path="/user/bookings" element={<UserBookings />} />
+        <Route path="/user/restaurant/:id/menu" element={<UserFoodMenu />} />
 
 
         {/* Restaurant Routes */}

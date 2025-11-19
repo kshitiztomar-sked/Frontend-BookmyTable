@@ -1,51 +1,108 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Star, MapPin, Phone, Info, MessageCircle } from "lucide-react";
+import styles from "./UserRestaurantExplore.module.css";
 import UserDashboardNavbar from "../../components/UserDashboardNavbar/UserDashboardNavbar";
 import Footer from "../../components/Footer/Footer";
-import "./UserRestaurantExplore.css";
+import UserFoodItems from "./UserFoodItems";
+import { useNavigate } from "react-router-dom";
 
 const UserRestaurantExplore = () => {
-  const { id } = useParams();
-
+  const navigate = useNavigate();
   return (
-    <div className="restaurant-explore-page">
+    <div>
       <UserDashboardNavbar />
+    <div className={styles.page}>
 
-      <div className="restaurant-explore-container">
-        <h1 className="restaurant-title">Restaurant Details #{id}</h1>
+      
+      {/* Cover Image */}
+      <div className={styles.cover}>
+        <img
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+          alt="Cover"
+        />
+      </div>
 
-        <div className="restaurant-section">
-          <h2>📜 Menu</h2>
-          <p>Show menu items here...</p>
-        </div>
+      {/* Logo + Basic Info */}
+      <div className={styles.header}>
+        <img
+          src="https://images.unsplash.com/photo-1528605248644-14dd04022da1"
+          alt="Logo"
+          className={styles.logo}
+        />
 
-        <div className="restaurant-section">
-          <h2>📍 Location</h2>
-          <p>City, State</p>
-          <button className="map-btn">View Map</button>
-        </div>
+        <div>
+          <h1 className={styles.title}>Restaurant Name</h1>
+          <p className={styles.subtitle}>
+            Italian • North Indian • Chinese
+          </p>
 
-        <div className="restaurant-section">
-          <h2>⭐ Rating</h2>
-          <p>4.6</p>
-        </div>
-
-        <div className="restaurant-section">
-          <h2>🏡 Garden Spaces</h2>
-          <p>Yes / No</p>
-        </div>
-
-        <div className="restaurant-section">
-          <h2>📞 Contact</h2>
-          <p>9876543210</p>
-        </div>
-
-        <div className="restaurant-section">
-          <h2>📧 Email</h2>
-          <p>example@restaurant.com</p>
+          {/* Stars */}
+          <div className={styles.stars}>
+            {[1, 2, 3, 4, 5].map((i) => (
+              <Star key={i} className={styles.star} />
+            ))}
+            <span className={styles.reviewCount}>(120 reviews)</span>
+          </div>
         </div>
       </div>
 
+      {/* Buttons */}
+      <div className={styles.buttons}>
+        <button className={styles.bookBtn} onClick={() => navigate(`/user/bookings`)} >Book a Table</button>
+
+        <button className={styles.reviewBtn}>
+          <MessageCircle size={16} /> Give Review
+        </button>
+      </div>
+
+      {/* Info Boxes */}
+      <div className={styles.grid}>
+        
+        {/* Specifications */}
+        <div className={styles.box}>
+          <h2 className={styles.boxTitle}>
+            <Info size={18} /> Specifications
+          </h2>
+          <ul className={styles.list}>
+            <li> Veg / Non-Veg</li>
+            <li> Air Conditioned</li>
+            <li> Live Music</li>
+            <li> Family Seating</li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className={styles.box}>
+          <h2 className={styles.boxTitle}>
+            <Phone size={18} /> Contact
+          </h2>
+          <p className={styles.text}>+91 98765 43210</p>
+          <p className={styles.text}>support@restaurant.com</p>
+        </div>
+
+        {/* Address */}
+        <div className={styles.box}>
+          <h2 className={styles.boxTitle}>
+            <MapPin size={18} /> Address
+          </h2>
+          <p className={styles.text}>
+            221B Baker Street, Sector 12,
+            <br /> New Delhi, India
+          </p>
+        </div>
+
+        {/* Extra Box */}
+        <div className={`${styles.box} ${styles.fullWidth}`}>
+          <h2 className={styles.boxTitle}>More Info</h2>
+          <p className={styles.text}>
+            This restaurant offers premium dining with authentic cuisines.
+            Perfect for family gatherings, celebrations, and weekend dinners.
+          </p>
+        </div>
+
+      </div>
+      </div>
+      <UserFoodItems />
       <Footer />
     </div>
   );
