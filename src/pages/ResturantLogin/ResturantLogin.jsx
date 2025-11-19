@@ -88,7 +88,7 @@ const ResturantLogin = () => {
           </button>
         </form>
       </div>
-      <FoodCard />
+      
      
     </div>
   );
