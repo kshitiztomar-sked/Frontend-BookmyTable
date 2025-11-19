@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";  // ⭐ Added
 import "./ResturantLogin.css";
 
 const ResturantLogin = () => {
   const [formData, setFormData] = useState({
-    restaurant_name: "",
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [message, setMessage] = useState("");
+  const [msgType, setMsgType] = useState("");
 
-  // Handle input changes
+  const navigate = useNavigate(); // ⭐ Added
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,26 +20,55 @@ const ResturantLogin = () => {
     });
   };
 
-  // Handle form submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
+    setMessage("");
+    setMsgType("");
 
-    const { restaurant_name, email, password } = formData;
+    const { email, password } = formData;
 
-    if (!restaurant_name || !email || !password) {
-      setError("All fields are required.");
+    if (!email || !password) {
+      setMsgType("error");
+      setMessage("Email and password are required.");
       return;
     }
 
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setError("Please enter a valid email address.");
-      return;
-    }
+    try {
+      const response = await fetch("http://localhost:8000/restorent/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    // Simulate successful login
-    setSuccess(`Welcome back, ${restaurant_name}!`);
+      const result = await response.json();
+      console.log("Backend Response:", result);
+
+      if (result.message) {
+        if (result.token) {
+          // SUCCESS LOGIN
+          localStorage.setItem("token", result.token);
+          setMsgType("success");
+          setMessage(result.message);
+
+          // ⭐ Redirect to dashboard after success
+          setTimeout(() => {
+            navigate("/restaurant/dashboard"); // <-- change path if needed
+          }, 800);
+
+        } else {
+          // ERROR
+          setMsgType("error");
+          setMessage(result.message);
+        }
+        return;
+      }
+
+      setMsgType("error");
+      setMessage("Unexpected server response.");
+    } catch (err) {
+      setMsgType("error");
+      setMessage("Something went wrong. Try again.");
+    }
   };
 
   return (
@@ -48,17 +78,6 @@ const ResturantLogin = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Restaurant Name</label>
-            <input
-              type="text"
-              name="restaurant_name"
-              value={formData.restaurant_name}
-              onChange={handleChange}
-              placeholder="Enter restaurant name"
-            />
-          </div>
-
-          <div className="form-group">
             <label>Email Address</label>
             <input
               type="email"
@@ -66,6 +85,7 @@ const ResturantLogin = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
+              required
             />
           </div>
 
@@ -77,19 +97,21 @@ const ResturantLogin = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter password"
+              required
             />
           </div>
 
-          {error && <p className="error-text">{error}</p>}
-          {success && <p className="success-text">{success}</p>}
+          {message && (
+            <p className={msgType === "error" ? "error-text" : "success-text"}>
+              {message}
+            </p>
+          )}
 
           <button type="submit" className="login-btn3">
             Login
           </button>
         </form>
       </div>
-      
-     
     </div>
   );
 };
