@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../../api/api";
 import "./Signup.css";
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: "User", 
+    role: "CUSTOMER",
   });
 
   const [error, setError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   // Handle input changes
   const handleChange = (e) => {
@@ -23,7 +27,7 @@ function SignUp() {
       setFormData((prev) => ({
         ...prev,
         email: value,
-        username: value, // 👈 auto set username same as email
+        username: value,
       }));
     } else {
       setFormData((prev) => ({
@@ -34,19 +38,42 @@ function SignUp() {
   };
 
   // Handle form submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccessMsg("");
 
-    // Validation: check if passwords match
+    // Password match validation
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
 
-    setError("");
-    console.log("Form Data:", formData);
+    // Payload formatted EXACTLY as backend requires
+    const payload = {
+      full_name: formData.fullName,
+      email_name: formData.email,
+      password: formData.password,
+      role: formData.role,
+    };
 
-    // TODO: send `formData` to backend API (POST /signup)
+    try {
+      const res = await API.post("/user/create", payload);
+      const backendMessage = res.data.message;
+
+      if (backendMessage === "user add") {
+        setSuccessMsg("Signup successful! Redirecting...");
+        setTimeout(() => navigate("/login"), 1200);
+      } else {
+        setError(backendMessage);
+      }
+    } catch (err) {
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
+      } else {
+        setError("Signup failed! Try again.");
+      }
+    }
   };
 
   return (
@@ -55,15 +82,18 @@ function SignUp() {
         <h2>Create an Account</h2>
 
         <form onSubmit={handleSubmit}>
+          {/* Username (readonly auto-filled) */}
           <input
             type="text"
             name="username"
-            placeholder="Username (auto-filled from email)"
+            placeholder="Username (auto-filled)"
             value={formData.username}
             onChange={handleChange}
             required
-            readOnly // 👈 makes it uneditable
+            readOnly
           />
+
+          {/* Full Name */}
           <input
             type="text"
             name="fullName"
@@ -72,22 +102,28 @@ function SignUp() {
             onChange={handleChange}
             required
           />
+
+          {/* Email */}
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
             required
           />
+
+          {/* Password */}
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Create Password"
             value={formData.password}
             onChange={handleChange}
             required
           />
+
+          {/* Confirm Password */}
           <input
             type="password"
             name="confirmPassword"
@@ -97,21 +133,34 @@ function SignUp() {
             required
           />
 
-          {/* Hidden role field */}
+          {/* Hidden Role */}
           <input type="hidden" name="role" value={formData.role} />
 
-          {/* Show error message if passwords don’t match */}
-          {error && <p className="error-text">{error}</p>}
+          {/* Error Message */}
+          {error && (
+            <p className="error-text" style={{ color: "red", fontWeight: "bold" }}>
+              {error}
+            </p>
+          )}
 
+          {/* Success Message */}
+          {successMsg && (
+            <p className="success-text" style={{ color: "green", fontWeight: "bold" }}>
+              {successMsg}
+            </p>
+          )}
+
+          {/* Submit Button */}
           <button type="submit" className="signup-btn">
             Sign Up
           </button>
 
+          {/* Redirect to Login */}
           <p className="login-link">
-           Already have an account?{" "}
-      <Link to="/login">
-        <span>Login</span>
-      </Link>
+            Already have an account?{" "}
+            <Link to="/login">
+              <span>Login</span>
+            </Link>
           </p>
         </form>
       </div>

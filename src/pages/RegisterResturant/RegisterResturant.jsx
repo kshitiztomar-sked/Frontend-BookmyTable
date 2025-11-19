@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./RegisterResturant.css";
 import { useNavigate } from "react-router-dom";
+import API from "../../api/api"; // backend axios instance
 
 const RegisterRestaurant = () => {
-  const navigate = useNavigate(); // ✅ You must define this
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    restaurant_name: "",
+    restorent_name: "", 
     email: "",
     password: "",
     confirmPassword: "",
@@ -15,42 +16,78 @@ const RegisterRestaurant = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Handle input changes
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  // Submit form
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
+    // Password validation
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
 
-    console.log("Restaurant Registered:", formData);
-    setSuccess("Restaurant registered successfully!");
+    const payload = {
+      restorent_name: formData.restorent_name, 
+      email: formData.email,
+      password: formData.password,
+    };
 
-    setFormData({
-      restaurant_name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    try {
+      const res = await API.post("/restorent/register", payload);
+      const result = res.data;
+
+      console.log("Backend Response:", result);
+
+      if (result.message) {
+        if (result.message === "restorent registerd") {
+          setSuccess("Restaurant registered successfully! Redirecting...");
+
+          // Redirect to restaurant login page
+          setTimeout(() => {
+            navigate("/restaurant/login");
+          }, 1200);
+
+        } else {
+          // Backend error message (e.g. already registered)
+          setError(result.message);
+        }
+        return;
+      }
+
+      setError("Unexpected server response.");
+
+    } catch (err) {
+      console.error(err);
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
+      } else {
+        setError("Server error. Please try again.");
+      }
+    }
   };
 
   return (
     <div className="register-container">
       <div className="register-card">
         <h1 className="register-title">Register Your Restaurant 🍽️</h1>
+
         <form className="register-form" onSubmit={handleSubmit}>
           <label>
             Restaurant Name
             <input
               type="text"
-              name="restaurant_name"
-              value={formData.restaurant_name}
+              name="restorent_name"
+              value={formData.restorent_name}
               onChange={handleChange}
               required
             />
@@ -92,15 +129,14 @@ const RegisterRestaurant = () => {
           {error && <p className="error-message">{error}</p>}
           {success && <p className="success-message">{success}</p>}
 
-          <button type="submit" className="register-btn2" onClick={() => navigate("/restaurant/register-details")}>
+          <button type="submit" className="register-btn2">
             Register
           </button>
 
-          {/* ✅ Correct Back Button */}
           <button
             type="button"
             className="back-btn1"
-            onClick={() => navigate("/")} // navigates to homepage
+            onClick={() => navigate("/")}
           >
             Back to Home
           </button>
