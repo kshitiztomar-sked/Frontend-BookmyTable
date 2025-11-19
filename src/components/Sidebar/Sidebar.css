@@ -141,7 +141,7 @@
   .sidebar-toggle{ right: -18px; top: 18px; }
   /* collapsed state */
 .sidebar.closed {
-  width: 31px;
+  width: 50px;
   padding-left: 14px;
   padding-right: 14px;
 }
